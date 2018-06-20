@@ -1,0 +1,65 @@
+﻿@model IEnumerable<JBScraper.Models.PortfolioInfo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CaptureDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PortfolioValue)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DayGain)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PercentDayGain)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalGain)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PercentTotalGain)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaptureDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PortfolioValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DayGain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PercentDayGain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalGain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PercentTotalGain)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PortfolioInfoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PortfolioInfoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PortfolioInfoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

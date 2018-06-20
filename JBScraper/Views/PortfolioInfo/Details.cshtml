@@ -1,0 +1,54 @@
+﻿@model JBScraper.Models.PortfolioInfo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PortfolioInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CaptureDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CaptureDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PortfolioValue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PortfolioValue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DayGain)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DayGain)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PercentDayGain)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PercentDayGain)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalGain)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalGain)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PercentTotalGain)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PercentTotalGain)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PortfolioInfoId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

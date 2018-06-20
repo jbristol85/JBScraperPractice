@@ -37,6 +37,9 @@ namespace JBScraper
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+
+            services.AddDbContext<JBScraperContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("JBScraperContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

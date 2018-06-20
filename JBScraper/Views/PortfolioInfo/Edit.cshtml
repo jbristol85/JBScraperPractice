@@ -1,0 +1,59 @@
+﻿@model JBScraper.Models.PortfolioInfo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>PortfolioInfo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PortfolioInfoId" />
+            <div class="form-group">
+                <label asp-for="CaptureDate" class="control-label"></label>
+                <input asp-for="CaptureDate" class="form-control" />
+                <span asp-validation-for="CaptureDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PortfolioValue" class="control-label"></label>
+                <input asp-for="PortfolioValue" class="form-control" />
+                <span asp-validation-for="PortfolioValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DayGain" class="control-label"></label>
+                <input asp-for="DayGain" class="form-control" />
+                <span asp-validation-for="DayGain" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PercentDayGain" class="control-label"></label>
+                <input asp-for="PercentDayGain" class="form-control" />
+                <span asp-validation-for="PercentDayGain" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalGain" class="control-label"></label>
+                <input asp-for="TotalGain" class="form-control" />
+                <span asp-validation-for="TotalGain" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PercentTotalGain" class="control-label"></label>
+                <input asp-for="PercentTotalGain" class="form-control" />
+                <span asp-validation-for="PercentTotalGain" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
