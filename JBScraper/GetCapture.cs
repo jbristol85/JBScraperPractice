@@ -1,11 +1,11 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using JBScraper.Models;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 namespace JBScraper
 {
@@ -18,10 +18,10 @@ namespace JBScraper
 
 //          
 
-            //            var options = new ChromeOptions();
-            //            options.AddArgument("--disable-gpu");
+            var options = new ChromeOptions();
+            options.AddArgument("--disable-gpu");
             // creates new chromeDriver and goes to webpage
-            var chromeDriver = new ChromeDriver();
+            var chromeDriver = new ChromeDriver(@"C:\Users\joshb\source\repos\JBScraper\JBScraper\Services", options);
             chromeDriver.Navigate().GoToUrl("https://login.yahoo.com/");
             // waits for page to load
             //            chromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(14);

@@ -55,13 +55,18 @@ namespace JBScraper.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PortfolioInfoId,CaptureDate,PortfolioValue,DayGain,PercentDayGain,TotalGain,PercentTotalGain")] PortfolioInfo portfolioInfo)
         {
+            var captureScrape = GetCapture.Capture();
             if (ModelState.IsValid)
             {
-                _context.Add(portfolioInfo);
+                _context.Add(captureScrape);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(portfolioInfo);
+            else
+            {
+                Console.WriteLine("error with scrape");
+            }
+            return View(captureScrape);
         }
 
         // GET: PortfolioInfo/Edit/5
