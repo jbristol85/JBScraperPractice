@@ -18,10 +18,10 @@ namespace JBScraper
 
 //          
 
-            var options = new ChromeOptions();
-            options.AddArgument("--disable-gpu");
+//            var options = new ChromeOptions();
+//            options.AddArgument("--disable-gpu");
             // creates new chromeDriver and goes to webpage
-            var chromeDriver = new ChromeDriver(@"C:\Users\joshb\source\repos\JBScraper\JBScraper\Services", options);
+            var chromeDriver = new ChromeDriver(@"./");
             chromeDriver.Navigate().GoToUrl("https://login.yahoo.com/");
             // waits for page to load
             //            chromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(14);
@@ -55,16 +55,17 @@ namespace JBScraper
                 .FindElementByXPath("//*[@id=\"main\"]/section/header/div/div[1]/div/div[2]/p[3]/span").Text.Split(' ');
             var dayGainPercent = dayGain[1];
             var totalGainPercent = totalGain[1];
-            var PortfolioValue = double.Parse(currentValue, NumberStyles.Currency);
-            var DayGain = double.Parse(dayGain[0]);
+            capture.CaptureDate = DateTime.Now;
+            capture.PortfolioValue = double.Parse(currentValue, NumberStyles.Currency);
+            capture.DayGain = double.Parse(dayGain[0]);
             //            capture.PercentDayGain = double.Parse(dayGainPercent.Remove(0, 1).Remove(dayGainPercent.Length - 2, dayGainPercent.Length - 1));
-            var PercentDayGain = (double.Parse(dayGainPercent.Trim(new char[] { ' ', '(', '%', ')' }))/100);
-            var TotalGain = double.Parse(totalGain[0]);
+            capture.PercentDayGain = (double.Parse(dayGainPercent.Trim(new char[] { ' ', '(', '%', ')' }))/100);
+            capture.TotalGain = double.Parse(totalGain[0]);
             //            capture.PercentTotalGain = double.Parse(totalGainPercent.Remove(0, 1).Remove(dayGainPercent.Length - 2, dayGainPercent.Length - 1));
-            var PercentTotalGain = (double.Parse(totalGainPercent.Trim(new char[] { ' ', '(', '%', ')' }))/100);
-            Console.WriteLine(
-                "currentValue: {0}, dayGain: {1}, totalGain: {2}, dayGainPercent: {3}, totalGainPercent: {4}",
-                PortfolioValue, DayGain, TotalGain, PercentDayGain, PercentTotalGain);
+            capture.PercentTotalGain = (double.Parse(totalGainPercent.Trim(new char[] { ' ', '(', '%', ')' }))/100);
+//            Console.WriteLine(
+//                "currentValue: {0}, dayGain: {1}, totalGain: {2}, dayGainPercent: {3}, totalGainPercent: {4}",
+//                PortfolioValue, DayGain, TotalGain, PercentDayGain, PercentTotalGain);
 
             //            // scrape symbols
             var portfolioStockInfo = new List<StockInfo>();
