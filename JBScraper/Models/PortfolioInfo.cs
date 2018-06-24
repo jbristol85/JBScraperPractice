@@ -56,6 +56,6 @@ namespace JBScraper.Models
         {
             get; set;
         }
-        public virtual ICollection<StockInfo> StockInfo { get; set; }
+        public virtual List<StockInfo> StockInfo { get; set; }
     }
 }

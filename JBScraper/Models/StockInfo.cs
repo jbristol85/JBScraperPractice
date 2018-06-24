@@ -55,9 +55,9 @@ namespace JBScraper.Models
         public string StockNotes { get; set; }
 
         
-        public int StockInfoId { get; set; }
+        public int Id { get; set; }
 
-        public int PortfolioInfoId { get; set; }
+//        public int PortfolioInfoId { get; set; }
         public virtual PortfolioInfo PortfolioInfo{ get; set; }
     }
 }

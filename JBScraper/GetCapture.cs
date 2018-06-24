@@ -69,10 +69,12 @@ namespace JBScraper
 
             //            // scrape symbols
             var portfolioStockInfo = new List<StockInfo>();
-            var table = chromeDriver.FindElement(By.TagName("table"));
-//            Console.WriteLine("Table" + table);
-            var tableRows = table.FindElements(By.TagName("tr"));
-            Console.WriteLine("tablerows" + tableRows);
+            //            var table = chromeDriver.FindElement(By.TagName("table"));
+            var table = chromeDriver.FindElement(By.ClassName("tJDbU"));
+            //            Console.WriteLine("Table" + table);
+            //            var tableRows = table.FindElements(By.TagName("tr"));
+            var tableRows = table.FindElements(By.ClassName("_14MJo"));
+            Console.WriteLine("tablerows" + tableRows.Count);
             var listRowData = new List<string>();
 
             // each row in the table
@@ -82,47 +84,47 @@ namespace JBScraper
                 if (tableColumn.Count > 0)
                 {
 
-                    foreach (var col in tableRows)
+                    foreach (var col in tableColumn)
                     {
                         listRowData.Add(col.Text);
                     }
 
-                    var symbolPrice = listRowData[0].Split('\n');
-                    var changePercentDollar = listRowData[1].Split('\n');
-                    var dayGainPercentDollar = listRowData[5].Split('\n');
-                    var totalGainPercentDollar = listRowData[6].Split('\n');
+                    var symbolPrice = listRowData[0].Split("\n");
+                    var changePercentDollar = listRowData[1].Split("\n");
+                    var dayGainPercentDollar = listRowData[5].Split("\n");
+                    var totalGainPercentDollar = listRowData[6].Split("\n");
                     var numLots = listRowData[7].Split(' ');
 
                     portfolioStockInfo.Add(new StockInfo()
                     {
 
                         StockSymbol = symbolPrice[0],
-                        StockCurrentPrice = Double.Parse(symbolPrice[1]),
-                        StockPriceChange = Double.Parse(changePercentDollar[1].Trim(new char[] {' ', '+'})),
+                        StockCurrentPrice = double.Parse(symbolPrice[1]),
+                        StockPriceChange = double.Parse(changePercentDollar[1]),
                         StockPriceChangePercent =
-                            (Double.Parse(changePercentDollar[0].Trim(new char[] {' ', '+', '%'})) / 100),
-                        StockShares = Double.Parse(listRowData[2]),
-                        StockCostBasis = Double.Parse(listRowData[3]),
-                        StockMarketValue = Double.Parse(listRowData[4]),
-                        StockDayGain = Double.Parse(dayGainPercentDollar[1]),
+                            double.Parse(changePercentDollar[0].Trim(new char[] {' ', '+', '%'})),
+                        StockShares = double.Parse(listRowData[2]),
+                        StockCostBasis = double.Parse(listRowData[3]),
+                        StockMarketValue = double.Parse(listRowData[4]),
+                        StockDayGain = double.Parse(dayGainPercentDollar[1]),
                         StockDayGainPercent =
-                            (Double.Parse(dayGainPercentDollar[0].Trim(new char[] {' ', '+', '%'})) / 100),
-                        StockTotalGain = Double.Parse(totalGainPercentDollar[1]),
+                            double.Parse(dayGainPercentDollar[0].Trim(new char[] {' ', '+', '%'})),
+                        StockTotalGain = double.Parse(totalGainPercentDollar[1]),
                         StockTotalGainPercent =
-                            (Double.Parse(totalGainPercentDollar[0].Trim(new char[] {' ', '+', '%'})) / 100),
+                            double.Parse(totalGainPercentDollar[0].Trim(new char[] {' ', '+', '%'})),
                         StockLots = Int32.Parse(numLots[0]),
                         StockNotes = listRowData[8]
                     });
-                    Console.WriteLine("going to clear");
-                    listRowData.Clear();
+                   
                 }
+                Console.WriteLine("going to clear");
+                listRowData.Clear();
 
-            
 
-            
+
             }
             chromeDriver.Quit();
-            Console.WriteLine("portfolioStockInfo:   " + portfolioStockInfo);
+//            Console.WriteLine("portfolioStockInfo:   " + portfolioStockInfo);
             capture.StockInfo = portfolioStockInfo;
             return capture;
         }

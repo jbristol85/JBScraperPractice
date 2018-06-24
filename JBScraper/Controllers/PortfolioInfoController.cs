@@ -53,7 +53,7 @@ namespace JBScraper.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PortfolioInfoId,CaptureDate,PortfolioValue,DayGain,PercentDayGain,TotalGain,PercentTotalGain")] PortfolioInfo portfolioInfo)
+        public async Task<IActionResult> Create( PortfolioInfo portfolioInfo)
         {
             var captureScrape = GetCapture.Capture();
             if (ModelState.IsValid)
