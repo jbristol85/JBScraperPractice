@@ -99,23 +99,25 @@ namespace JBScraper
                     {
 
                         StockSymbol = symbolPrice[0],
-                        StockCurrentPrice = double.Parse(symbolPrice[1]),
-                        StockPriceChange = double.Parse(changePercentDollar[1]),
-                        StockPriceChangePercent =
-                            double.Parse(changePercentDollar[0].Trim(new char[] {' ', '+', '%'})),
-                        StockShares = double.Parse(listRowData[2]),
-                        StockCostBasis = double.Parse(listRowData[3]),
-                        StockMarketValue = double.Parse(listRowData[4]),
-                        StockDayGain = double.Parse(dayGainPercentDollar[1]),
-                        StockDayGainPercent =
-                            double.Parse(dayGainPercentDollar[0].Trim(new char[] {' ', '+', '%'})),
-                        StockTotalGain = double.Parse(totalGainPercentDollar[1]),
-                        StockTotalGainPercent =
-                            double.Parse(totalGainPercentDollar[0].Trim(new char[] {' ', '+', '%'})),
-                        StockLots = Int32.Parse(numLots[0]),
+                        StockCurrentPrice = symbolPrice[1],
+                        StockPriceChange = changePercentDollar[1],
+                        StockPriceChangePercent = changePercentDollar[0].Trim(new char[] {' ', '+', '%'}),
+                        StockShares = listRowData[2],
+                        StockCostBasis = listRowData[3],
+                        StockMarketValue = listRowData[4],
+                        StockDayGain = dayGainPercentDollar[1],
+                        StockDayGainPercent = dayGainPercentDollar[0].Trim(new char[] {' ', '+', '%'}),
+                        StockTotalGain = totalGainPercentDollar[1],
+                        StockTotalGainPercent = totalGainPercentDollar[0].Trim(new char[] {' ', '+', '%'}),
+                        StockLots = numLots[0],
                         StockNotes = listRowData[8]
+
+
                     });
-                   
+                    foreach (var info in portfolioStockInfo)
+                    {
+                        Console.WriteLine("Info: " + info);
+                    }
                 }
                 Console.WriteLine("going to clear");
                 listRowData.Clear();
