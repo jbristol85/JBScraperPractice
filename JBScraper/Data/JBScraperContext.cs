@@ -14,7 +14,5 @@ namespace JBScraper.Models
         }
 
         public DbSet<JBScraper.Models.PortfolioInfo> PortfolioInfo { get; set; }
-
-        public DbSet<JBScraper.Models.StockInfo> StockInfo { get; set; }
     }
 }
