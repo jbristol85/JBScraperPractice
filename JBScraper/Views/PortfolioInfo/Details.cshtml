@@ -49,6 +49,101 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.PortfolioInfoId">Edit</a> |
+    @* <a asp-action="Edit" asp-route-id="@Model.PortfolioInfoId">Edit</a> | *@
     <a asp-action="Index">Back to List</a>
 </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockSymbol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockCurrentPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockPriceChange)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockPriceChangePercent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockShares)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockCostBasis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockMarketValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockDayGain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockDayGainPercent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockTotalGain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockTotalGainPercent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockLots)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockNotes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.StockInfo)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockSymbol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockCurrentPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockPriceChange)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockPriceChangePercent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockShares)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockCostBasis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockMarketValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockDayGain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockDayGainPercent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockTotalGain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockTotalGainPercent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockLots)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockNotes)
+            </td>
+
+        </tr>
+
+            
+    }
+    </tbody>
+</table>

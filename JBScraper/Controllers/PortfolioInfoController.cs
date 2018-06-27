@@ -34,11 +34,15 @@ namespace JBScraper.Controllers
 
             var portfolioInfo = await _context.PortfolioInfo
                 .SingleOrDefaultAsync(m => m.PortfolioInfoId == id);
+            var stocks = from s in _context.StockInfo.Where(m => m.PortfolioInfo.PortfolioInfoId == id)
+                select s;
+
             if (portfolioInfo == null)
             {
                 return NotFound();
             }
 
+            portfolioInfo.StockInfo = await stocks.AsNoTracking().ToListAsync();
             return View(portfolioInfo);
         }
 
